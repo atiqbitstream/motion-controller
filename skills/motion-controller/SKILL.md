@@ -16,7 +16,7 @@ Figure out two things from the user:
 1. **Engine** — Unity, or C/C++ (or another engine that can call C). These are the two supported paths.
 2. **What the player should do** — the movements, and the game action each should trigger (for example "point to aim", "pull the index finger to fire", "raise both arms to fly").
 
-If the **Motion Controller MCP server** is available in this session (tools like `list_capabilities`, `create_action_map`, `check_runtime`), use it: it lists the real capabilities, writes a valid action map and checks it. If it is not, use `reference/capabilities.md` here and write the action map by hand to the shape below. The developer can add the MCP server from the repo's `adapters/mcp` folder; suggest it if they will iterate.
+If the **Motion Controller MCP server** is available in this session (tools like `list_capabilities`, `create_action_map`, `check_runtime`), use it: it lists the real capabilities, writes a valid action map and checks it. If it is not, use `reference/capabilities.md` here and write the action map by hand to the shape below. The developer can add the MCP server from the repo's `tools/mcp` folder; suggest it if they will iterate.
 
 ## The steps
 
