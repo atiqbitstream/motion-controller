@@ -9,13 +9,29 @@ There are two pieces. Use either or both.
 An **MCP server** is a small program your assistant connects to so it can act on the Motion Controller for you. It is read-only: it holds no secret, writes nothing, and cannot issue a licence.
 
 1. Get the server: download the **`AI-Tools`** zip from the [latest release](https://github.com/atiqbitstream/motion-controller/releases/latest) and unzip it, or copy the `tools/mcp` folder from this repository.
-2. Add it to your assistant (Node 18+ required, nothing to install). For Claude Code:
+2. Add it to your assistant (Node 18+ required, nothing to install). You are always pointing it at `motion-controller-mcp.mjs` run by `node`, with the **full path** to the file; only where the setting goes differs by client.
 
+   **Claude Code (terminal):**
    ```sh
-   claude mcp add motion-controller -- node /full/path/to/tools/mcp/motion-controller-mcp.mjs
+   claude mcp add motion-controller -- node /full/path/to/mcp/motion-controller-mcp.mjs
    ```
 
-   For Claude Desktop, Cursor and VS Code, add the same `command`/`args` to your client's MCP config. Full steps are in the server's own `README.md`.
+   **OpenAI Codex CLI:**
+   ```sh
+   codex mcp add motion-controller -- node /full/path/to/mcp/motion-controller-mcp.mjs
+   ```
+
+   **GitHub Copilot (VS Code)** — create `.vscode/mcp.json` in your project (the top key is `servers`), then click **Start** above it:
+   ```json
+   { "servers": { "motion-controller": { "command": "node", "args": ["/full/path/to/mcp/motion-controller-mcp.mjs"] } } }
+   ```
+
+   **Claude Desktop, Cursor, Windsurf, Cline** — add this to your client's MCP config file (Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and so on):
+   ```json
+   { "mcpServers": { "motion-controller": { "command": "node", "args": ["/full/path/to/mcp/motion-controller-mcp.mjs"] } } }
+   ```
+
+   The only difference between clients is one word (`servers` for VS Code/Copilot, `mcpServers` for most others, a `[mcp_servers.<name>]` TOML table for Codex). The server's own `README.md` has the full per-client steps and a Codex `config.toml` example.
 3. Ask away: *"Is my Motion Controller runtime running?"*, *"Make an action map for my shooter: aim with the hand, fire with the trigger, reload with two hands"*, *"Check this action map."*
 
 What it can do: check the runtime, list and describe the motions, create an action map, validate one, and explain licensing.

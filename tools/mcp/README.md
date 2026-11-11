@@ -21,15 +21,46 @@ Node 18 or newer. Nothing to install: the server is one file and speaks the MCP 
 
 ## Add it to your assistant
 
-Point your assistant at `motion-controller-mcp.mjs` in this folder. Use the full path.
+Whatever the client, you are pointing it at `motion-controller-mcp.mjs` in this folder, run by `node`. **Use the full path** to the file (for example `/Users/you/motion-controller/tools/mcp/motion-controller-mcp.mjs`, or on Windows `C:\\Users\\you\\motion-controller\\tools\\mcp\\motion-controller-mcp.mjs`). It works the same on every client; only where you put the setting differs.
 
-**Claude Code (terminal):**
+### Claude Code (terminal)
 
 ```sh
 claude mcp add motion-controller -- node /full/path/to/motion-controller-mcp.mjs
 ```
 
-**Claude Desktop** — edit the config file (macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`; Windows: `%APPDATA%\Claude\claude_desktop_config.json`), then fully quit and reopen Claude:
+### OpenAI Codex CLI
+
+```sh
+codex mcp add motion-controller -- node /full/path/to/motion-controller-mcp.mjs
+```
+
+Or add it to `~/.codex/config.toml` by hand (the table name must be `mcp_servers`, with the underscore):
+
+```toml
+[mcp_servers.motion-controller]
+command = "node"
+args = ["/full/path/to/motion-controller-mcp.mjs"]
+```
+
+### GitHub Copilot (VS Code)
+
+Create `.vscode/mcp.json` in your project (note the top-level key is `servers`), then click **Start** above the entry, or reload the window:
+
+```json
+{
+  "servers": {
+    "motion-controller": {
+      "command": "node",
+      "args": ["/full/path/to/motion-controller-mcp.mjs"]
+    }
+  }
+}
+```
+
+### Claude Desktop
+
+Edit the config file (macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`; Windows: `%APPDATA%\Claude\claude_desktop_config.json`), then fully quit and reopen Claude:
 
 ```json
 {
@@ -42,7 +73,11 @@ claude mcp add motion-controller -- node /full/path/to/motion-controller-mcp.mjs
 }
 ```
 
-**Cursor** — the same block in `.cursor/mcp.json` in your project, or `~/.cursor/mcp.json` for every project. **VS Code** and other MCP clients take the same `command`/`args` shape; see your client's docs for where its config lives.
+### Cursor, Windsurf, Cline and other MCP clients
+
+These use the same `mcpServers` block as Claude Desktop above. Put it in the file your client reads: Cursor uses `.cursor/mcp.json` in your project (or `~/.cursor/mcp.json` for every project); Windsurf and Cline have their own MCP settings panel. Check your client's docs for the file location; the `command` and `args` are always the same.
+
+> Tip: the config formats differ in just one word — Claude, Cursor, Windsurf and Cline use `mcpServers`, VS Code/Copilot uses `servers`, and Codex uses a `[mcp_servers.<name>]` TOML table. The `command: node` and `args: [path]` are identical everywhere.
 
 ## Try it
 
