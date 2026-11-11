@@ -60,6 +60,8 @@ You can add webcam motion control to a Unity or C/C++ game. Players install the 
 
 The C SDK includes a tiny ready-to-build example (`hello_motion`) that connects, shows your licence working, and prints each move you make. It is the fastest way to see the whole thing run.
 
+**Prefer to build with an AI assistant?** You can let Claude, Cursor, VS Code or ChatGPT do the integration. Download the **`AI-Tools`** zip for a plug-in MCP server (it checks your runtime, lists the motions, and writes and validates your action map) and a Claude Skill that walks the whole setup. See [Build it with an AI assistant](docs/ai-integration.md).
+
 Everything else is in the [documentation](docs/README.md): the ideas behind it, every motion it can recognise, every error and what to do about it, and the full reference.
 
 ### Get a licence

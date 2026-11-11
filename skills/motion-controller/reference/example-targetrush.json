@@ -1,0 +1,76 @@
+{
+  "schema": "motionctl-actionmap/1",
+  "appId": "com.example.shooter",
+  "requires": [
+    "pistol.aim",
+    "pistol.trigger",
+    "pistol.holdFire",
+    "pistol.reload"
+  ],
+  "actions": [
+    {
+      "name": "aim",
+      "kind": "axis2",
+      "from": [
+        {
+          "capability": "pistol.aim@^1",
+          "output": "aim"
+        }
+      ]
+    },
+    {
+      "name": "fire",
+      "kind": "event",
+      "from": [
+        {
+          "capability": "pistol.trigger@^1",
+          "output": "pistolTrigger"
+        }
+      ]
+    },
+    {
+      "name": "hold",
+      "kind": "event",
+      "from": [
+        {
+          "capability": "pistol.holdFire@^1",
+          "output": "holdFire"
+        }
+      ]
+    },
+    {
+      "name": "reload",
+      "kind": "event",
+      "from": [
+        {
+          "capability": "pistol.reload@^1",
+          "output": "reload"
+        }
+      ]
+    }
+  ],
+  "contexts": [
+    {
+      "name": "menu",
+      "capabilities": [
+        "pistol.aim"
+      ]
+    },
+    {
+      "name": "round",
+      "capabilities": [
+        "pistol.aim",
+        "pistol.trigger",
+        "pistol.holdFire"
+      ]
+    },
+    {
+      "name": "reload",
+      "capabilities": [
+        "pistol.aim",
+        "pistol.reload"
+      ]
+    }
+  ],
+  "initialContext": "menu"
+}

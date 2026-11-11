@@ -1,0 +1,11 @@
+{
+  "name": "motion-controller-mcp",
+  "version": "0.1.0",
+  "description": "MCP server to help an AI assistant add webcam motion control to a game: check the runtime, list motions, write and validate an action map, get a licence.",
+  "type": "module",
+  "bin": { "motion-controller-mcp": "motion-controller-mcp.mjs" },
+  "files": ["motion-controller-mcp.mjs", "data"],
+  "engines": { "node": ">=18" },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true
+}

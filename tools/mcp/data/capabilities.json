@@ -1,0 +1,1329 @@
+{
+ "generatedFrom": "CapabilityHost().descriptors()",
+ "count": 30,
+ "capabilities": [
+  {
+   "id": "pistol.aim",
+   "version": 1,
+   "title": "Pistol aim",
+   "family": "pointer",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 1,
+    "minFps": 30,
+    "minResolution": {
+     "width": 1280,
+     "height": 720
+    },
+    "framing": "One hand in the picture, pointing at the screen."
+   },
+   "emits": [],
+   "provides": [
+    {
+     "output": "aim",
+     "kind": "point"
+    }
+   ],
+   "calibration": {
+    "stages": 12
+   }
+  },
+  {
+   "id": "pistol.trigger",
+   "version": 1,
+   "title": "Pistol trigger",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 1,
+    "minFps": 30,
+    "minResolution": {
+     "width": 1280,
+     "height": 720
+    },
+    "framing": "The shooting hand in the picture, index finger forward."
+   },
+   "emits": [
+    {
+     "output": "pistolTrigger",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [
+      "pull"
+     ],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "pistol.holdFire",
+   "version": 1,
+   "title": "Fire by holding the aim",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": {
+     "width": 1280,
+     "height": 720
+    },
+    "framing": "The shooting hand in the picture, held still on the target."
+   },
+   "emits": [
+    {
+     "output": "holdFire",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [
+      "hold"
+     ],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "pistol.reload",
+   "version": 1,
+   "title": "Pistol reload",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": {
+     "width": 1280,
+     "height": 720
+    },
+    "framing": "Both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "reload",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "rifle.hold",
+   "version": 1,
+   "title": "Rifle hold",
+   "family": "weapon",
+   "tier": "ga",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "rifleHold",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "rifle.aim",
+   "version": 1,
+   "title": "Rifle aim",
+   "family": "weapon",
+   "tier": "ga",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "rifleAim",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "rifle.trigger",
+   "version": 1,
+   "title": "Rifle trigger",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "rifleTrigger",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "rifle.reload",
+   "version": 1,
+   "title": "Rifle reload",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "rifleReload",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "climb.reach",
+   "version": 1,
+   "title": "Climbing reach",
+   "family": "locomotion",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders, arms and hips in the picture, standing, with room to reach up."
+   },
+   "emits": [
+    {
+     "output": "climbReachLeft",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "dirX",
+      "dirY",
+      "speed",
+      "outToSide",
+      "handOutOfView"
+     ]
+    },
+    {
+     "output": "climbReachRight",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "dirX",
+      "dirY",
+      "speed",
+      "outToSide",
+      "handOutOfView"
+     ]
+    },
+    {
+     "output": "climbReachBoth",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "leftDirX",
+      "leftDirY",
+      "rightDirX",
+      "rightDirY",
+      "speed",
+      "outToSide",
+      "handOutOfView"
+     ]
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "locomotion.walk",
+   "version": 1,
+   "title": "Walking and running by the arms",
+   "family": "locomotion",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Facing the camera, shoulders, hips and both hands in the picture, arms free to swing."
+   },
+   "emits": [
+    {
+     "output": "walk",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "run",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": {
+    "stages": 8
+   }
+  },
+  {
+   "id": "flight.fly",
+   "version": 1,
+   "title": "Superhero flight",
+   "family": "locomotion",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body",
+     "hands"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Standing, head to hips and both arms in the picture, with room to raise the arms."
+   },
+   "emits": [
+    {
+     "output": "flightTakeoff",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "flightAirborne",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "flightCommand",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "command"
+     ]
+    },
+    {
+     "output": "flightSmash",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "intensity",
+      "hand"
+     ]
+    },
+    {
+     "output": "flightImpact",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "intensity",
+      "radius",
+      "damage",
+      "push",
+      "x",
+      "y",
+      "z"
+     ]
+    },
+    {
+     "output": "flightLanding",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "reason"
+     ]
+    },
+    {
+     "output": "flightTouchdown",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "smash"
+     ]
+    },
+    {
+     "output": "flightHome",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "hand.snap",
+   "version": 1,
+   "title": "Finger snap",
+   "family": "manipulation",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "The snapping hand in the picture, palm toward the camera, and the body (to tell the hands apart)."
+   },
+   "emits": [
+    {
+     "output": "snap",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "certain"
+     ]
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "tk.arm-aim",
+   "version": 1,
+   "title": "Telekinesis arm aim",
+   "family": "pointer",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body",
+     "hands"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Standing, head to hips and both arms in the picture, the hands toward the camera."
+   },
+   "emits": [],
+   "provides": [
+    {
+     "output": "tkAimLeft",
+     "kind": "point"
+    },
+    {
+     "output": "tkAimRight",
+     "kind": "point"
+    },
+    {
+     "output": "tkHoldAimLeft",
+     "kind": "point"
+    },
+    {
+     "output": "tkHoldAimRight",
+     "kind": "point"
+    }
+   ],
+   "calibration": {
+    "stages": 4
+   }
+  },
+  {
+   "id": "tk.manipulate",
+   "version": 1,
+   "title": "Telekinesis",
+   "family": "manipulation",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body",
+     "hands"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Standing, head to hips and both arms in the picture, the hands toward the camera."
+   },
+   "emits": [
+    {
+     "output": "tkGrab",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "certain"
+     ]
+    },
+    {
+     "output": "tkThrowReady",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": [
+      "speed",
+      "cue"
+     ]
+    },
+    {
+     "output": "tkRelease",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "kind",
+      "speed",
+      "flickX",
+      "flickY",
+      "raised",
+      "certain",
+      "openMs"
+     ]
+    },
+    {
+     "output": "tkSlam",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "handSpeed",
+      "speed"
+     ]
+    },
+    {
+     "output": "tkHoldLost",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "tkSwat",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": [
+      "side",
+      "speed"
+     ]
+    },
+    {
+     "output": "tkSweep",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "speed"
+     ]
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "ghost.hands",
+   "version": 1,
+   "title": "Ghost hands",
+   "family": "other",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "One or both hands in the picture, and the body (to tell the hands apart)."
+   },
+   "emits": [],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "ghost.punch",
+   "version": 1,
+   "title": "Ghost hands punches",
+   "family": "strike",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body",
+     "hands"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head to hips and both hands in the picture, facing the camera."
+   },
+   "emits": [
+    {
+     "output": "ghostPunch",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "kind",
+      "x",
+      "y",
+      "reach",
+      "gain"
+     ]
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "ghost.kick",
+   "version": 1,
+   "title": "Ghost hands kicks",
+   "family": "strike",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "The whole body in the picture, feet included (or down to the knees), with room to kick."
+   },
+   "emits": [
+    {
+     "output": "ghostKick",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "source",
+      "x",
+      "y",
+      "height",
+      "forward"
+     ]
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "hand.pose",
+   "version": 1,
+   "title": "Hand poses",
+   "family": "other",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 1,
+    "minFps": 30,
+    "minResolution": {
+     "width": 1280,
+     "height": 720
+    },
+    "framing": "One or both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "open",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "fist",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "point",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "gun",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "pinch",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "hand.gesture",
+   "version": 1,
+   "title": "Hand gestures",
+   "family": "manipulation",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 1,
+    "minFps": 30,
+    "minResolution": {
+     "width": 1280,
+     "height": 720
+    },
+    "framing": "One hand in the picture, with room to move."
+   },
+   "emits": [
+    {
+     "output": "swipe",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "punch",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "grab",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "release",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "circle",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "trigger",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "combat.strikes",
+   "version": 1,
+   "title": "Punches and elbows",
+   "family": "strike",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head to hips and both arms in the picture, standing side-on or facing the camera."
+   },
+   "emits": [
+    {
+     "output": "jab",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "cross",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "uppercut",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "elbow",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "combat.kicks",
+   "version": 1,
+   "title": "Kicks",
+   "family": "strike",
+   "tier": "ga",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "The whole body in the picture, with room to kick."
+   },
+   "emits": [
+    {
+     "output": "kick",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "sideKick",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "roundhouse",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "combat.blocks",
+   "version": 1,
+   "title": "Blocks and guard",
+   "family": "other",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both arms in the picture."
+   },
+   "emits": [
+    {
+     "output": "blockLeft",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "blockRight",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "blockBoth",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "guard",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "combat.grab",
+   "version": 1,
+   "title": "Grabs",
+   "family": "manipulation",
+   "tier": "ga",
+   "validation": "development-data",
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "grabLeft",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "grabRight",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "combat.claws",
+   "version": 1,
+   "title": "Claws",
+   "family": "strike",
+   "tier": "ga",
+   "validation": "development-data",
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head, shoulders and both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "clawsOut",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "clawsIn",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "combat.dodge",
+   "version": 1,
+   "title": "Dodges and duck",
+   "family": "other",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Head and shoulders in the picture, with room to move to either side and down."
+   },
+   "emits": [
+    {
+     "output": "dodgeLeft",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "dodgeRight",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "duck",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "archery.release",
+   "version": 1,
+   "title": "Release the arrow",
+   "family": "weapon",
+   "tier": "ga",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Both hands and the head in the picture, the draw hand coming back to the face."
+   },
+   "emits": [
+    {
+     "output": "drawCandidate",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "arrowRelease",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "archery.draw",
+   "version": 1,
+   "title": "Draw the bow",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Both hands and the head in the picture."
+   },
+   "emits": [
+    {
+     "output": "bowDraw",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    },
+    {
+     "output": "bowFullDraw",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "archery.aim",
+   "version": 1,
+   "title": "Bow raised to aim",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Both hands and the head in the picture, the bow arm raised."
+   },
+   "emits": [
+    {
+     "output": "bowAim",
+     "phases": [
+      "started",
+      "ended"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [
+    {
+     "output": "bowPoint",
+     "kind": "point"
+    }
+   ],
+   "calibration": {
+    "stages": 3
+   }
+  },
+  {
+   "id": "archery.nock",
+   "version": 1,
+   "title": "Nock an arrow",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands"
+    ],
+    "hands": 2,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Both hands in the picture."
+   },
+   "emits": [
+    {
+     "output": "nock",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": []
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  },
+  {
+   "id": "archery.shot",
+   "version": 1,
+   "title": "Shoot the arrow when the draw hand opens",
+   "family": "weapon",
+   "tier": "preview",
+   "validation": null,
+   "requires": {
+    "signals": [
+     "hands",
+     "body"
+    ],
+    "hands": 0,
+    "minFps": 30,
+    "minResolution": null,
+    "framing": "Both hands and the head in the picture, the bow arm raised and the draw hand coming back to the face."
+   },
+   "emits": [
+    {
+     "output": "arrowShot",
+     "phases": [
+      "performed"
+     ],
+     "triggers": [],
+     "fields": [
+      "aimX",
+      "aimY",
+      "draw",
+      "aimAgeMs",
+      "waitedMs",
+      "cue"
+     ]
+    }
+   ],
+   "provides": [],
+   "calibration": null
+  }
+ ]
+}
