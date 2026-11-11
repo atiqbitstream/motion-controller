@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://motionctl.dev/schemas/motionctl-actionmap-1.schema.json",
+  "title": "Motion Controller action map, version 1",
+  "description": "A game's actions, the capability outputs that drive them, and the contexts that switch capabilities on and off. The runtime checks more than this schema can (that capabilities exist, outputs exist, versions match), and lists every problem it finds.",
+  "type": "object",
+  "required": ["schema", "appId", "requires", "actions", "contexts", "initialContext"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "motionctl-actionmap/1" },
+    "appId": { "type": "string", "minLength": 1, "description": "The game's identifier; it must be the entitlement's app id." },
+    "requires": { "type": "array", "items": { "$ref": "#/$defs/capabilityRef" }, "description": "Capabilities the game cannot play without: one the runtime lacks fails the session." },
+    "optional": { "type": "array", "items": { "$ref": "#/$defs/capabilityRef" }, "description": "Capabilities the game can play without: one the runtime lacks is left out and reported." },
+    "actions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/action" } },
+    "contexts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/context" } },
+    "initialContext": { "type": "string", "minLength": 1, "description": "One of the contexts' names." }
+  },
+  "$defs": {
+    "capabilityRef": { "type": "string", "pattern": "^[a-z]+(\\.[a-zA-Z]+(-[a-zA-Z]+)*)+(@\\^?[0-9]+)?$", "description": "A capability id, optionally pinned to a major version: pistol.trigger, or pistol.trigger@^1. A segment may be hyphenated: tk.arm-aim." },
+    "action": {
+      "type": "object",
+      "required": ["name", "kind", "from"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["button", "event", "axis2"], "description": "button: held while the motion lasts; event: a one-shot; axis2: a position in the mirrored view, 0..1 each way." },
+        "from": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/binding" } }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "required": ["capability", "output"],
+      "additionalProperties": false,
+      "properties": {
+        "capability": { "$ref": "#/$defs/capabilityRef" },
+        "output": { "type": "string", "minLength": 1, "description": "The capability's output name, as its descriptor lists it." },
+        "direction": { "type": "string", "description": "For an output with directions: only this one." },
+        "hand": { "enum": ["left", "right"], "description": "Only when this hand performed it." },
+        "minConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "deadZone": { "type": "number", "minimum": 0, "maximum": 1, "description": "An axis only: movement smaller than this is not passed on. Within the capability's declared limit (its descriptor's config)." },
+        "smoothingMs": { "type": "number", "minimum": 0, "maximum": 1000, "description": "An axis only: extra smoothing, a time constant in ms. Within the capability's declared limit." },
+        "invertY": { "type": "boolean", "description": "An axis only: the vertical component turned over (y becomes 1 - y). Where the capability declares it (its descriptor's config)." },
+        "sensitivity": { "type": "number", "minimum": 0, "maximum": 10, "description": "An axis only: a scale on the distance from the view's centre, each component then held to 0..1. Within the capability's declared limit." },
+        "curve": { "enum": ["linear"], "description": "An axis only: the response curve on the distance from the centre. One of the capability's declared options." },
+        "holdMs": { "type": "number", "minimum": 0, "maximum": 10000, "description": "A button only, on an output that starts and ends: the action starts once the input has been held this long, in ms; a shorter press is not delivered. Within the capability's declared limit." }
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": ["name", "capabilities"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "capabilities": { "type": "array", "items": { "$ref": "#/$defs/capabilityRef" } }
+      }
+    }
+  }
+}

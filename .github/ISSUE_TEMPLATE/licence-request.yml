@@ -1,0 +1,44 @@
+name: Licence request
+description: Ask for a free early-access licence for your game.
+title: "Licence: <your app id>"
+labels: ["licence"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A licence lets the Motion Controller Runtime accept your game. Early-access licences are free and last 10 years.
+        **This issue is public.** Do not post anything private here. Licence files are never posted in issues.
+  - type: input
+    id: app_id
+    attributes:
+      label: App id
+      description: Reverse-domain style, the same as your action map's "appId". For example com.yourstudio.yourgame
+      placeholder: com.yourstudio.yourgame
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: Game name
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Engine
+      options:
+        - Unity
+        - C / C++
+        - Other (calls the C library)
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Capabilities you use
+      description: From the capability catalogue (docs/capabilities.md), for example pistol.trigger, pistol.aim. Leave empty if you are not sure yet.
+  - type: input
+    id: delivery
+    attributes:
+      label: Where to send the licence file
+      description: An email address you are comfortable showing publicly, or leave empty and we will arrange delivery in this issue.
