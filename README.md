@@ -1,67 +1,83 @@
 # Motion Controller
 
-Turn a webcam into a game controller. Players move (aim, punch, fly, shoot) and your game receives actions, the way it would from a gamepad. Your game never touches the camera.
+**Play games with your body, using just your webcam. No special equipment.**
 
-The **Motion Controller Runtime** runs on the player's computer. It owns the camera and recognises the motion. Your game connects to it through the SDK and gets events such as `fire` or an `aim` position.
+Your webcam watches you move. You aim with your hand, pull a trigger with your finger, punch, fly, duck. A game turns those movements into controls, the way a gamepad would. There is nothing to hold and nothing to wear.
 
-- **Engines:** Unity (Input System device, plus calls shaped like the old `Input` class) and C/C++ (`libmotionctl`).
-- **Platforms:** Windows 10/11 x64, and macOS 11 or later on Apple silicon (M1 or later). Intel Macs are not supported yet.
-- **Price:** free during early access. You need a free licence for your game; see [Get a licence](#get-a-licence).
+The part that watches the camera is a small free app called the **Motion Controller Runtime**. It runs quietly in the background on your own computer. Everything it sees stays on your computer: the picture is never saved, never sent anywhere, and never shown to the game. The game is only told things like "fire" or "aim here".
 
-## For players
+- **Works on:** Windows 10 and 11, and Macs with Apple chips (M1 or newer).
+- **Costs:** nothing right now.
+- **You need:** a computer with a webcam, and a bit of room to move your hands or body.
 
-1. Download the runtime for your computer from the [latest release](https://github.com/atiqbitstream/motion-controller/releases/latest):
-   - Windows: `MotionController-Runtime-<version>-Windows-x64-Setup.exe`
-   - Mac with Apple silicon (M1 or later): `MotionController-Runtime-<version>-macOS-AppleSilicon.dmg`
-2. Install it (see the first-launch warnings below).
-3. Start the game. The runtime asks for the camera the first time. The picture never leaves your computer, is never saved, and the game never sees it.
+## Which of these are you?
 
-### First-launch warnings
+- **"I just want to try it."** → [I want to try it](#i-want-to-try-it)
+- **"I make games and want to add this."** → [I make games](#i-make-games)
 
-The runtime is not signed with a paid Apple or Microsoft certificate, so your computer warns you the first time.
+---
 
-- **Windows:** SmartScreen says "Windows protected your PC". Click **More info**, then **Run anyway**. The installer needs no administrator rights and installs for your user only.
-- **macOS:** open the `.dmg` and drag **Motion Controller Runtime** to Applications. The first time, right-click (or Control-click) the app and choose **Open**, then **Open** again. If macOS still refuses, run this once in Terminal:
+## I want to try it
 
-  ```sh
-  xattr -dr com.apple.quarantine "/Applications/Motion Controller Runtime.app"
-  ```
+Right now this is brand new, so there is no ready-made game to click and play yet. That is coming. What you can do today is install the app and know it works, so you are ready the moment a game is here.
 
-The runtime runs in the background (a tray icon on Windows, a menu bar icon on macOS), where you can choose the camera.
+**Step 1 — Download the app.** Go to the [downloads page](https://github.com/atiqbitstream/motion-controller/releases/latest) and pick the file for your computer:
 
-## For game developers
+| Your computer | File to download |
+|---|---|
+| Windows (most PCs) | the file ending in **`Windows-x64-Setup.exe`** |
+| Mac with an Apple chip (M1, M2, M3 or newer) | the file ending in **`macOS-AppleSilicon.dmg`** |
 
-1. **Install the runtime** on your development machine, as a player would (above).
-2. **Get a licence** for your game's app id (below). It is a small file you ship with your game.
-3. **Add the SDK** from the [latest release](https://github.com/atiqbitstream/motion-controller/releases/latest):
-   - Unity: `MotionController-Unity-<version>.zip`. Follow [Quick start: Unity](docs/quick-start-unity.md).
-   - C/C++ or any engine that can call C: `MotionController-C-SDK-<version>.zip`. Follow [Quick start: C](docs/quick-start-c.md).
-4. Before you release, go through the [shipping checklist](docs/shipping-checklist.md).
+Not sure which Mac you have? Click the Apple menu in the top-left corner, then "About This Mac". If it says "Apple M1" (or M2, M3, and so on), use the Mac file. Older Intel Macs are not supported yet.
 
-The full documentation is in [docs](docs/README.md): concepts, every capability, every error and what to do about it, and the C API.
+**Step 2 — Open the file you downloaded and install it.**
 
-## Get a licence
+- **Windows:** double-click the file. Windows may show a blue box saying "Windows protected your PC". This is normal for new apps. Click the small **"More info"** text, then the **"Run anyway"** button. It installs just for you and does not need an administrator.
+- **Mac:** double-click the file, then drag the **Motion Controller Runtime** icon onto the **Applications** folder shown next to it. The first time you open it, hold **Control**, click the app, and choose **Open**, then **Open** again in the box that appears. You only do this once.
 
-The runtime only accepts games that present a valid licence for their app id. During early access, licences are free.
+Why the warnings? The app is brand new and not yet stamped with a paid certificate from Apple or Microsoft. The warning is about that stamp, not about anything being wrong with the app.
 
-1. Choose your game's **app id**, reverse-domain style, for example `com.yourstudio.yourgame`. It must match the `appId` in your action map.
-2. [Open a licence request](https://github.com/atiqbitstream/motion-controller/issues/new?template=licence-request.yml) with your app id and the capabilities you use.
-3. You receive a file named `<app id>.entitlement.json`. Put it in your game:
-   - Unity: assign it to the bridge's **Entitlement** field (or pass it to `MotionInput.Begin`).
-   - C: pass its bytes as `mc_config.entitlement` / `entitlement_len`.
+**Step 3 — Let it see the camera.** The app lives in the background: a tiny icon in the system tray on Windows (bottom-right), or the menu bar on Mac (top-right). Click it to pick which camera to use. The first time a game uses it, your computer asks permission for the camera. Say yes.
 
-A licence lasts 10 years, so a game you ship keeps working for its players. The runtime checks it on the player's computer, with no internet connection needed. Licence files are never posted publicly.
+That's it. The app is ready and waiting. When a game that uses it comes out, you just start the game and move.
 
-## What you get, and what you don't
+**Your privacy, in plain words:** the camera picture is looked at only on your own computer, only while a game is actually running, and is thrown away immediately. It is never recorded and never leaves your machine. Games get the moves, never the picture.
 
-Your game receives actions, axes, named numbers and state. It never receives camera frames, body points or anything about how motion is recognised. See [what the runtime protects](docs/protection.md) for the honest details.
+---
 
-## Help
+## I make games
 
-- Something does not register: [troubleshooting](docs/troubleshooting.md).
-- An error code: [errors](docs/errors.md).
-- Anything else: [open an issue](https://github.com/atiqbitstream/motion-controller/issues/new). Attach a support bundle if you can. It holds versions and recent events, never images.
+You can add webcam motion control to a Unity or C/C++ game. Players install the free runtime above; your game talks to it and receives actions like `fire`, `reload`, or an `aim` position, exactly as it would read a gamepad. Your game never touches the camera or the recognition.
 
-## Licence
+**In short:**
 
-The runtime and SDK are free to use under the terms in [LICENSE.md](LICENSE.md). This repository holds the releases and documentation; the runtime's source is not public.
+1. Install the runtime on your own machine (the steps above).
+2. [Ask for a free licence](#get-a-licence) for your game.
+3. Add the SDK and follow one short guide:
+   - **Unity:** download the **`Unity`** zip from the [downloads page](https://github.com/atiqbitstream/motion-controller/releases/latest) and follow [Quick start: Unity](docs/quick-start-unity.md).
+   - **C, C++, or another engine:** download the **`C-SDK`** zip and follow [Quick start: C](docs/quick-start-c.md).
+4. Before you ship, run through the [shipping checklist](docs/shipping-checklist.md).
+
+The C SDK includes a tiny ready-to-build example (`hello_motion`) that connects, shows your licence working, and prints each move you make. It is the fastest way to see the whole thing run.
+
+Everything else is in the [documentation](docs/README.md): the ideas behind it, every motion it can recognise, every error and what to do about it, and the full reference.
+
+### Get a licence
+
+The runtime only runs games that carry a valid licence. During early access they are free and last 10 years, so a game you ship keeps working for your players with no internet needed.
+
+1. Pick an **app id** for your game. It looks like a backwards web address, for example `com.yourstudio.yourgame`. It must match the `appId` inside your action map.
+2. [Open a licence request](https://github.com/atiqbitstream/motion-controller/issues/new?template=licence-request.yml) and fill in the short form.
+3. You get back a small file named after your app id. Drop it into your game (the quick starts show exactly where). Licence files are never posted in public.
+
+---
+
+## Getting help
+
+- A move isn't registering → [troubleshooting](docs/troubleshooting.md)
+- You saw an error code → [errors](docs/errors.md)
+- Anything else → [open an issue](https://github.com/atiqbitstream/motion-controller/issues/new) and describe what happened
+
+## The fine print
+
+The runtime and SDK are free to use under the terms in [LICENSE.md](LICENSE.md). This page holds the downloads and the documentation. The runtime's own source code is not public.

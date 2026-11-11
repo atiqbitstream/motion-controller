@@ -21,7 +21,7 @@ The Motion Controller runtime is built so that recognising motion stays inside i
 - **The runtime's own key ships inside it.** It is what lets `libmotionctl` recognise the genuine runtime. Someone who extracts it from an installed copy could impersonate the runtime on that machine.
 - **The same user is trusted.** The runtime does not yet check which process is connecting.
 - **Validity is checked at `HELLO`.** A session that outlives its entitlement's grace keeps playing until it reconnects. The runtime works offline, so it learns that a licence was revoked only from a newer one a game presents.
-- **The installers are not signed with a paid certificate.** Players see a first-launch warning (see the main page). The runtime's code is bundled JavaScript, not compiled to bytecode.
+- **The installers are not signed with a paid certificate.** Players see a first-launch warning (see the main page). The runtime's code is minified JavaScript, bundled into one file with its comments removed and its names shortened, not compiled to bytecode: it raises the cost of reading the recognition out of an installed copy, it does not make it impossible.
 
 ## What this means for your game
 
